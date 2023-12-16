@@ -13,18 +13,28 @@ import com.example.saveingnote.databinding.FragmentSecondBinding
  */
 class SecondFragment : Fragment() {
 
+//      first step creating null property to bind the layout fragment
+//    if this feature is eneabled in module Build.grandle
+//    buildFeatures {
+//        viewBinding true
+//    }
     private var _binding : FragmentSecondBinding?=null
 
     // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get()=_binding!!
+    // onDestroyView. get() means get-only so it doesn't have a setter
+    private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState : Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater : LayoutInflater, container : ViewGroup?,
         savedInstanceState : Bundle?
     ) : View? {
 
-        _binding=FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
 
     }
